@@ -12,7 +12,7 @@
         <div  class="springy-text" >
 
             <h2>
-                Accueil
+                ACCUEIL
             </h2>
         </div>
     </div>
@@ -24,14 +24,14 @@
         <input class="button3" type=button onClick="location.href='?page=pav/liste_pav'" value='Gestion des PAV'>
         <input class="button3" type=button onClick="location.href='?page=tournee/liste_tournee'" value='Gestion des tournées'>
         <input class="button3" type=button onClick="location.href='?page=agent/liste_agent'" value='Gestion des agents'>
-        <input class="button3" type=button onClick="location.href='?page=index'" value='Se Déconnecter'>
+        <input class="button3" type=button onClick="location.href='?page=index'"  value='Se Déconnecter'>
     </div>
 </div>
 
 <div class = "drop-shadow" >
     <div class="box">
         <p>
-            Version de l'application - société qui l'a créée - date- etc (en petit en bas de page centré)
+            Société EDMESO - 08 98 56 76 59 - contact@edmeso.fr - v1.0
         </p>
     </div>
 </div>

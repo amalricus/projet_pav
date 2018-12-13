@@ -7,10 +7,10 @@ echo "<pre>";
 $db = new PDO('mysql:host=localhost;dbname=bdd_projet_pav;charset=utf8', 'admin', 'cesi');
 
 $statements = $db->prepare('UPDATE tournee 
-                            SET date_t = :date,  id_a = :id_agent) 
+                            SET date_t = :date, id_a = :id_agent 
                             WHERE id_t = :id_tournee');
 $statements->bindParam(':date', $_POST['date_t']);
-$statements->bindValue(':id_agent', $_POST['agent_id']);
+$statements->bindParam(':id_agent', $_POST['agent_id']);
 $statements->bindParam(':id_tournee', $_POST['id_t']);
 $statements->execute();
 

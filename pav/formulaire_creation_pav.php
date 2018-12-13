@@ -14,13 +14,14 @@
         <h2>
             CREATION d'UN PAV
         </h2>
+    </div>
 
 </div>
 
 <div class = "drop-shadow" id="container" >
     <div class="box">  
         <form action="pav/creation_pav.php" method="POST">
-            <input type="text" size="50" name="nom_p" placeholder="Quartier - Ville" required/><br/>
+            <input type="text" size="50" name="nom_p" placeholder="Ville - Quartier" required/><br/>
             <input type="text" size="50"name="numrue_p" placeholder="Numéro de rue" required/><br/>
             <input type="text" size="50"name="rue_p" placeholder="Rue" required/><br/>
             <input type="int" size="50"name="cp_p" placeholder="Code postal" required/><br/>

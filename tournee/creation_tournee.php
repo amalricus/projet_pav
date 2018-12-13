@@ -1,8 +1,10 @@
 <?php
 
+/*
 echo "<pre>";
 print_r($_POST);
 echo "<pre>";
+*/
 
 $db = new PDO('mysql:host=localhost;dbname=bdd_projet_pav;charset=utf8', 'admin', 'cesi');
 

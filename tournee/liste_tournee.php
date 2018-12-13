@@ -32,7 +32,7 @@
     <div class="box2" overflow="scroll">
         <TABLE  width=100%>
             <TR>
-                <TH> SELECTIONNEZ UNE TOURNEE </TH>
+                <TH> SELECTIONNEZ UNE TOURNEE A MODIFIER</TH>
                 <TH> DATE ET HEURE</TH>
                 <TH> NOM AGENT </TH>
             </TR>
@@ -43,9 +43,10 @@
 <?php
 $db = new PDO('mysql:host=localhost;dbname=bdd_projet_pav;charset=utf8', 'admin', 'cesi');
 $statements = $db->prepare('SELECT id_t, numero_t, date_t, id_a
-                                FROM tournee');
+                            FROM tournee');
 $statements->execute();
 $results_tournee = $statements->fetchAll();
+
 $statements = $db->prepare('SELECT nom_a, prenom_a
                                 FROM agent
                                 WHERE id_a = :id');

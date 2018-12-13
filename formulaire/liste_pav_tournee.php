@@ -7,13 +7,34 @@
 </head>
 <body>
 
+<div class = "drop-shadow" id="container" >
+    <div class="box">
+        <h2>
+            TOURNEE
+        </h2>
+    </div>
+
+</div>
+
+
+<div class = "drop-shadow" id="container" >
+    <div class="box">
 <?php
 
-$nom_agent = $_POST['nom_a'];
-$prenom_agent = $_POST['prenom_a'];
+//$nom_agent = $_POST['nom_a'];
+//$prenom_agent = $_POST['prenom_a'];
 
 
 $db = new PDO('mysql:host=localhost;dbname=bdd_projet_pav;charset=utf8', 'admin', 'cesi');
+
+$statements = $db->prepare('SELECT nom_a, prenom_a
+                            FROM agent
+                            WHERE id_a = :id_agent');
+
+$statements->bindValue(':id_agent', $_POST['agents_id']);
+$statements->execute();
+$results_agents = $statements->fetchAll();
+
 
 $statements = $db->prepare('SELECT id_t, date_t
                             FROM tournee
@@ -24,12 +45,13 @@ $results_tournee_agent = $statements->fetchAll();
 
 /*
 echo "<pre>";
+print_r($results_agents);
 print_r($_POST);
 echo "<pre>";
 */
 
-echo '<h1>Tournée ' .$results_tournee_agent[0]['id_t'] .'</h1>';
-echo '<h2>' .$_POST['nom_a'] ." " .$_POST['prenom_a'] .'</h2>';
+echo '<h2>Tournée affectée à : ' .$results_tournee_agent[0]['id_t'] .'</h2>';
+echo '<h2>' .$results_agents[0]['nom_a'] ." " .$results_agents[0]['prenom_a'] .'</h2>';
 echo '<h3>Date de la tournée : ' .$results_tournee_agent[0]['date_t'] .'</h3>';
 
 $statements = $db->prepare('SELECT id_p
@@ -63,7 +85,8 @@ $statements->bindParam(':id_pav', $idPav);
     ?>
 </form>
 <input class="button3" type=button onClick="location.href='?page=formulaire/liste_agents'" value='Retour'>
-
+    </div>
+</div>
 </body>
 </html>
 

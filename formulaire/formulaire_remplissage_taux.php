@@ -7,6 +7,13 @@
 </head>
 <body>
 
+<div class = "drop-shadow" id="container" >
+    <div class="box">
+        <h2>
+            REMPLISSAGE DES PAV
+        </h2>
+    </div>
+</div>
 <?php
 
 /*
@@ -15,9 +22,9 @@ print_r($_POST);
 echo "<pre>";
 */
 
-echo '<h1>Tournée ' .$_POST['id_t'] .'</h1>';
+echo '<h2> Tournée ' .$_POST['id_t'] .'</h2>';
 echo '<h2>' .$_POST['nom_a'] ." " .$_POST['prenom_a'] .'</h2>';
-echo '<h3>Date de la tournée : ' .$_POST['date_t'] .'</h3>';
+echo '<h2> Date de la tournée : ' .$_POST['date_t'] .'</h2>';
 
 
 $select_pav = $_POST['pav_id'];
@@ -32,7 +39,11 @@ $statements->execute();
 $results = $statements->fetchAll();
 
 ?>
-<h1><?php echo $results[0][1]?></h1>
+
+
+<div class = "drop-shadow" id="container" >
+    <div class="box">
+<h2><?php echo $results[0][1]?></h2>
 
     <form action="?page=formulaire/traitement_remplissage" method="POST">
         <input type="hidden" name="id_p" value="<?php echo $select_pav?>"/>
@@ -43,8 +54,13 @@ $results = $statements->fetchAll();
         <input type="radio" name="taux_p" value="75">Taux 75%<br>
         <input type="radio" name="taux_p" value="100">Taux 100%<br>
         <textarea rows="3" cols="30" name="com_p" placeholder="Commentaires"></textarea><br>
+    </div>
+</div>
+        <div class = "drop-shadow" id="container" >
+            <div class="box">
         <input class="button3" type="submit" value="Valider"/>
     </form>
+
 
     <!-- Bouton Retour -->
     <form action="?page=formulaire/liste_pav_tournee" method="POST">
@@ -56,5 +72,11 @@ $results = $statements->fetchAll();
         <input class="button3" type="submit" value="Retour">
 
     </form>
+    </div>
+</div>
+
+    </div>
+    </div>
+</div>
 </body>
 </html>

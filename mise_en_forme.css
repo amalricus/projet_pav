@@ -5,16 +5,16 @@ body {
 }
 
 
-h2{
+h2, h3 {
     text-align : center;
     color : #eb675e;
 }
 
 p    {
-    color: black;
+    color:  #eb675e;
 }
 
-table, th{
+th{
     border-bottom: 2px solid darkgrey;
     color : #eb675e;
 }
@@ -70,6 +70,7 @@ label {
     font-family:Arial;
     font-size:15px;
     padding:6px 15px;
+    margin-right : 10px;
     text-decoration:none;
     text-shadow:0px 1px 0px #b23e35;
     min-width : 150px;
@@ -112,7 +113,7 @@ label {
     display : flex;
     background : lightgrey;
     flex-direction : row;
-    justify-content : space-between;
+    justify-content : center;
     align-content : center;
     height : 400px;
     align-items:stretch;
@@ -120,23 +121,13 @@ label {
 
 .box3 {
     background : lightgrey;
-    padding: 10px;
+    width : 100%;
+    margin-right : 80px;
+    padding: 1px;
     flex : auto;
     height : 300px;
     overflow: hidden;
     overflow : scroll;
     color : white;
     text-align : center;
-}
-.larger {
-    background: grey;
-    flex: 3 0 auto;
-}
-
-.navigation {
-    background-color:grey;
-    display: flex;
-    flex-flow: row wrap;
-    /* This aligns items to the end line on main-axis */
-    justify-content: center;
 }

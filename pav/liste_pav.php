@@ -12,7 +12,7 @@
     <div class="box">
 
             <h2>
-                LISTE DES PAV A MODIFIER
+                LISTE DES PAV
             </h2>
     </div>
 </div>
@@ -37,6 +37,7 @@
                 <TH> NUMERO DE RUE </TH>
                 <TH> NOM DE RUE </TH>
                 <TH> CODE POSTAL </TH>
+                <TH> TAUX </TH>
             </TR>
     </div>
 </div>
@@ -45,18 +46,29 @@
 <?php
 
 $db = new PDO('mysql:host=localhost;dbname=bdd_projet_pav;charset=utf8', 'admin', 'cesi');
-$statements = $db->prepare('SELECT * FROM pav');
+
+$statements = $db->prepare('SELECT * 
+                            FROM pav');
 $statements->execute();
 $results = $statements->fetchAll();
 
-echo '<form action="?page=pav/formulaire_modification_pav" method="POST">';
+$statements = $db->prepare('SELECT taux_p 
+                            FROM pav_tournee
+                            WHERE id_p = :id');
 
+echo '<form action="?page=pav/formulaire_modification_pav" method="POST">';
 for ($i=0; $i < count($results); $i++)
-{
-    echo '<TR><TH><button class="button3" type="submit" name="pav_id" value=' .$results[$i]['id_p']. '>' .$results[$i]['nom_p'] .'</button></TH>';
+{   
+    $idPav = $results[$i]['id_p'];
+    $statements->bindParam(':id', $idPav);
+    $statements->execute();
+    $results_taux = $statements->fetchAll();
+
+    echo   '<TR><TH><button class="button3" type="submit" name="pav_id" value=' .$results[$i]['id_p']. '>' .$results[$i]['nom_p'] .'</button></TH>';
     echo   '<TH width=10%><type="text" name="numrue_pav" value='.$results[$i]['numrue_p']. '>' .$results[$i]['numrue_p'].' </TH>';
-    echo   '<TH width=40%><type="text" name="rue_pav" value='.$results[$i]['rue_p']. '>' .$results[$i]['rue_p'].' </TH>';
-    echo   '<TH width=20%><type="text" name="cp_pav" value='.$results[$i]['cp_p']. '>' .$results[$i]['cp_p'].' </TH></TR>';
+    echo   '<TH width=30%><type="text" name="rue_pav" value='.$results[$i]['rue_p']. '>' .$results[$i]['rue_p'].' </TH>';
+    echo   '<TH width=10%><type="text" name="cp_pav" value='.$results[$i]['cp_p']. '>' .$results[$i]['cp_p'] .'</TH>';
+    echo   '<TH width=10%><type="text" name="taux_pav" value='.$results[$i]['id_p']. '>' .$results_taux[0]['taux_p'].'</TH></TR>';
 }
 echo '</form>';
 ?>
